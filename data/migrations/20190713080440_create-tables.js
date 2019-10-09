@@ -12,7 +12,7 @@ exports.up = function(knex) {
       tbl.integer('step_number')
         .unsigned()
         .notNullable();
-      tbl.text('instructions')
+      tbl.text('instructions', 128)
         .notNullable();
       tbl.integer('scheme_id')
         .unsigned()
@@ -27,5 +27,6 @@ exports.up = function(knex) {
 exports.down = function(knex) {
   return knex.schema
     .dropTableIfExists('steps')
-    .dropTableIfExists('schemes');
+    .dropTableIfExists('schemes')
+    .dropTableIfExists('instructions');
 };
